@@ -1,12 +1,12 @@
 namespace: prod-namespace
 
 frontend:
-  image: satishosk/taskmanager-frontend:main-20250607-0712
+  image: satishosk/taskmanager-frontend:main-20250607-1754
   replicas: 2
   port: 3000
 
 backend:
-  image: satishosk/taskmanager-backend:main-20250607-0712
+  image: satishosk/taskmanager-backend:main-20250607-1754
   replicas: 2
   port: 8000
   mongoUri: mongodb+srv://taskuser:taskpass@cluster0.mongodb.net/taskdb?retryWrites=true&w=majority
