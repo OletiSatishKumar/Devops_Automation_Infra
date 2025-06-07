@@ -1,0 +1,15 @@
+namespace: dev-namespace
+
+frontend:
+  image: ""
+  replicas: 1
+  port: 3000
+
+backend:
+  image: ""
+  replicas: 1
+  port: 8000
+  mongoUri: ""
+
+mongodb:
+  enabled: false  # overridden in dev

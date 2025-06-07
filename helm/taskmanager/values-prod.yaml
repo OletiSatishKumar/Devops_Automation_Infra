@@ -1,0 +1,15 @@
+namespace: prod-namespace
+
+frontend:
+  image: satishosk/taskmanager-frontend:prod-latest
+  replicas: 2
+  port: 3000
+
+backend:
+  image: satishosk/taskmanager-backend:prod-latest
+  replicas: 2
+  port: 8000
+  mongoUri: mongodb+srv://taskuser:taskpass@cluster0.mongodb.net/taskdb?retryWrites=true&w=majority
+
+mongodb:
+  enabled: false

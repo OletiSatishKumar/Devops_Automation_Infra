@@ -1,0 +1,41 @@
+Devops_Automation_Infra/
+├── helm/
+│   ├── taskmanager/                     # Main Helm chart for app
+│   │   ├── Chart.yaml
+│   │   ├── values.yaml                  # Base config (shared)
+│   │   ├── values-dev.yaml              # Dev environment overrides
+│   │   ├── values-prod.yaml             # Prod environment overrides
+│   │   ├── templates/
+│   │   │   ├── deployment-frontend.yaml
+│   │   │   ├── deployment-backend.yaml
+│   │   │   ├── service-frontend.yaml
+│   │   │   ├── service-backend.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   └── _helpers.tpl
+│   └── mongodb/                         # Optional subchart for Dev MongoDB
+│       ├── values.yaml
+│       ├── templates/
+│       │   ├── deployment.yaml
+│       │   └── service.yaml
+│
+├── k8s/
+│   └── base/
+│       ├── namespace-dev.yaml
+│       └── namespace-prod.yaml
+│
+├── argocd/
+│   ├── taskmanager-dev-app.yaml        # Argo CD Application (Dev)
+│   └── taskmanager-prod-app.yaml       # Argo CD Application (Prod)
+│
+├── prometheus/
+│   └── prometheus-values.yaml
+│
+├── grafana/
+│   └── grafana-values.yaml
+│
+├── secrets/                             # Optional: Store sealed secrets or templates
+│   ├── mongodb-prod-secret.yaml         # For MongoDB Atlas credentials
+│   └── mongodb-dev-secret.yaml          # For Dev Mongo (if needed)
+│
+├── README.md
+└── .gitignore

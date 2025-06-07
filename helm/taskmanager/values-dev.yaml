@@ -1,0 +1,22 @@
+namespace: dev-namespace
+
+frontend:
+  image: satishosk/taskmanager-frontend:dev-latest
+  replicas: 1
+  port: 3000
+
+backend:
+  image: satishosk/taskmanager-backend:dev-latest
+  replicas: 1
+  port: 8000
+  mongoUri: mongodb://taskuser:taskpass@mongodb:27017/taskdb
+
+mongodb:
+  enabled: true
+  auth:
+    username: taskuser
+    password: taskpass
+    database: taskdb
+  architecture: standalone
+  persistence:
+    enabled: false
