@@ -1,8 +1,0 @@
-replicaCount: 1
-
-auth:
-  username: taskuser
-  password: taskpass
-  database: taskdb
-
-port: 27017

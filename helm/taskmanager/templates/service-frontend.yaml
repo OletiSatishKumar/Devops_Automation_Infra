@@ -4,9 +4,10 @@ metadata:
   name: frontend
   namespace: {{ .Values.namespace }}
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: frontend
   ports:
     - port: 80
       targetPort: {{ .Values.frontend.port }}
+      nodePort: {{ .Values.frontend.nodePort | default 30080 }}

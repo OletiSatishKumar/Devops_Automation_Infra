@@ -4,19 +4,19 @@ frontend:
   image: satishosk/taskmanager-frontend:dev-20250607-0736
   replicas: 1
   port: 3000
+  nodePort: 30080
 
 backend:
   image: satishosk/taskmanager-backend:dev-20250607-0736
   replicas: 1
   port: 8000
-  mongoUri: mongodb://taskuser:taskpass@mongodb:27017/taskdb
+  mongoSecretName: mongodb-dev-secret
 
 mongodb:
-  enabled: true
-  auth:
-    username: taskuser
-    password: taskpass
-    database: taskdb
-  architecture: standalone
-  persistence:
-    enabled: false
+  enabled: false
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80

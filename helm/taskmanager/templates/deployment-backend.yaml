@@ -20,4 +20,7 @@ spec:
             - containerPort: {{ .Values.backend.port }}
           env:
             - name: MONGO_URI
-              value: "{{ .Values.backend.mongoUri }}"
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.backend.mongoSecretName }}
+                  key: MONGO_URI

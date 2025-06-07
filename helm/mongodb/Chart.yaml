@@ -1,6 +1,0 @@
-apiVersion: v2
-name: mongodb
-description: A lightweight MongoDB chart for development
-type: application
-version: 0.1.0
-appVersion: "6.0"

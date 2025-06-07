@@ -4,6 +4,7 @@ frontend:
   image: ""
   replicas: 1
   port: 3000
+  nodePort: 30080
 
 backend:
   image: ""

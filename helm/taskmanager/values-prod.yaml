@@ -9,7 +9,14 @@ backend:
   image: satishosk/taskmanager-backend:main-20250607-0712
   replicas: 2
   port: 8000
-  mongoUri: mongodb+srv://taskuser:taskpass@cluster0.mongodb.net/taskdb?retryWrites=true&w=majority
+  mongoSecretName: mongodb-dev-secret
 
 mongodb:
   enabled: false
+
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80

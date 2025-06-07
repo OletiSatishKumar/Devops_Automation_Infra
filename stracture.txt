@@ -12,12 +12,6 @@ Devops_Automation_Infra/
 │   │   │   ├── service-backend.yaml
 │   │   │   ├── ingress.yaml
 │   │   │   └── _helpers.tpl
-│   └── mongodb/                         # Optional subchart for Dev MongoDB
-│       ├── values.yaml
-│       ├── templates/
-│       │   ├── deployment.yaml
-│       │   └── service.yaml
-│
 ├── k8s/
 │   └── base/
 │       ├── namespace-dev.yaml
