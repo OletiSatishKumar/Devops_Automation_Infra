@@ -20,13 +20,7 @@ Devops_Automation_Infra/
 ├── argocd/
 │   ├── taskmanager-dev-app.yaml        # Argo CD Application (Dev)
 │   └── taskmanager-prod-app.yaml       # Argo CD Application (Prod)
-│
-├── prometheus/
-│   └── prometheus-values.yaml
-│
-├── grafana/
-│   └── grafana-values.yaml
-│
+|
 ├── secrets/                             # Optional: Store sealed secrets or templates
 │   ├── mongodb-prod-secret.yaml         # For MongoDB Atlas credentials
 │   └── mongodb-dev-secret.yaml          # For Dev Mongo (if needed)
