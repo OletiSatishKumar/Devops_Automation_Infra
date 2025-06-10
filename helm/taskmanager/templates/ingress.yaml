@@ -15,9 +15,9 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ include "taskmanager.frontendServiceName" . }}
+                name: {{ .Values.frontend.name }}
                 port:
-                  number: 3000
+                  number: {{ .Values.frontend.port }}
     - host: backend.local
       http:
         paths:
@@ -25,6 +25,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ include "taskmanager.backendServiceName" . }}
+                name: {{ .Values.backend.name }}
                 port:
-                  number: 5000
+                   number: {{ .Values.backend.port }}
