@@ -1,30 +1,30 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: taskmanager-ingress
-  namespace: {{ .Values.namespace | default "dev-namespace" }}
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  ingressClassName: nginx
-  rules:
-    - host: frontend.local
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ .Values.frontend.name }}
-                port:
-                  number: {{ .Values.frontend.port }}
-    - host: backend.local
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ .Values.backend.name }}
-                port:
-                   number: {{ .Values.backend.port }}
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: taskmanager-ingress
+#   namespace: {{ .Values.namespace | default "dev-namespace" }}
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#     - host: frontend.local
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: {{ .Values.frontend.name }}
+#                 port:
+#                   number: {{ .Values.frontend.port }}
+#     - host: backend.local
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: {{ .Values.backend.name }}
+#                 port:
+#                    number: {{ .Values.backend.port }}
