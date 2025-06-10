@@ -78,9 +78,4 @@ kubectl apply -f argocd/taskmanager-dev-app.yaml
 kubectl apply -f argocd/taskmanager-prod-app.yaml
 
 
-kubectl apply -f argocd/prometheus-app.yaml
-kubectl apply -f argocd/grafana-app.yaml
-
-
-
 ngrok http https://localhost:8080
