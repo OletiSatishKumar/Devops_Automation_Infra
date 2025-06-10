@@ -1,22 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: taskmanager-prod
+  name: prometheus
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: 'https://github.com/OletiSatishKumar/Devops_Automation_Infra.git'
-    targetRevision: HEAD
-    path: helm/taskmanager
+    chart: prometheus
+    targetRevision: 25.18.0
     helm:
       valueFiles:
-        - values.yaml
-        - values-prod.yaml
+        - prometheus-values.yaml
   destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: prod-namespace
+    server: https://kubernetes.default.svc
+    namespace: monitoring
   syncPolicy:
     automated:
-      prune: true
       selfHeal: true
+      prune: true

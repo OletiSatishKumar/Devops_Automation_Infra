@@ -33,3 +33,56 @@ Devops_Automation_Infra/
 │
 ├── README.md
 └── .gitignore
+
+
+
+helm install taskmanager-dev ./helm/taskmanager -n dev-namespace -f ./helm/taskmanager/values-dev.yaml
+
+helm update taskmanager-dev ./helm/taskmanager -n dev-namespace -f ./helm/taskmanager/values-dev.yaml
+
+kubectl port-forward svc/backend 8000:80 -n dev-namespace
+
+# Monitoring 
+
+kubectl create namespace monitoring
+
+helm install prometheus prometheus-community/prometheus -n monitoring -f prometheus/prometheus-values.yaml
+
+helm install grafana grafana/grafana -n monitoring -f grafana/grafana-values.yaml
+
+
+
+
+# 2. Create Required Kubernetes Namespaces
+
+kubectl apply -f k8s/base/namespace-dev.yaml
+kubectl apply -f k8s/base/namespace-prod.yaml
+
+kubectl create namespace monitoring
+
+# 3. Apply Secrets (MongoDB URIs)
+
+kubectl apply -f secrets/mongodb-dev-secret.yaml -n dev-namespace
+kubectl apply -f secrets/mongodb-prod-secret.yaml -n prod-namespace
+
+#  4. Set Up Argo CD (if not done)
+
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+### password 
+
+kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
+
+
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+
+# Apply Argo CD Applications
+
+kubectl apply -f argocd/taskmanager-dev-app.yaml
+kubectl apply -f argocd/taskmanager-prod-app.yaml
+
+
+kubectl apply -f argocd/prometheus-app.yaml
+kubectl apply -f argocd/grafana-app.yaml

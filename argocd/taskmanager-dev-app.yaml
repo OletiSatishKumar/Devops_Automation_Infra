@@ -6,14 +6,15 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/OletiSatishKumar/Devops_Automation_Infra.git
+    repoURL: 'https://github.com/OletiSatishKumar/Devops_Automation_Infra.git'
     targetRevision: HEAD
     path: helm/taskmanager
     helm:
       valueFiles:
+        - values.yaml
         - values-dev.yaml
   destination:
-    server: https://kubernetes.default.svc
+    server: 'https://kubernetes.default.svc'
     namespace: dev-namespace
   syncPolicy:
     automated:
