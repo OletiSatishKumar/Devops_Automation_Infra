@@ -1,12 +1,12 @@
 namespace: prod-namespace
 
 frontend:
-  image: satishosk/taskmanager-frontend:main-20250607-1754
+  image: satishosk/taskmanager-frontend:main-20250610-0712
   replicas: 2
   port: 3000
 
 backend:
-  image: satishosk/taskmanager-backend:main-20250607-1754
+  image: satishosk/taskmanager-backend:main-20250610-0712
   replicas: 2
   port: 8000
   mongoSecretName: mongodb-dev-secret
