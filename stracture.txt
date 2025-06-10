@@ -36,15 +36,6 @@ helm update taskmanager-dev ./helm/taskmanager -n dev-namespace -f ./helm/taskma
 
 kubectl port-forward svc/backend 8000:80 -n dev-namespace
 
-# Monitoring 
-
-kubectl create namespace monitoring
-
-helm install prometheus prometheus-community/prometheus -n monitoring -f prometheus/prometheus-values.yaml
-
-helm install grafana grafana/grafana -n monitoring -f grafana/grafana-values.yaml
-
-
 
 
 # 2. Create Required Kubernetes Namespaces
@@ -78,9 +69,8 @@ kubectl apply -f argocd/taskmanager-dev-app.yaml
 kubectl apply -f argocd/taskmanager-prod-app.yaml
 
 
-kubectl apply -f argocd/prometheus-app.yaml
-kubectl apply -f argocd/grafana-app.yaml
-
-
+kubectl port-forward svc/argocd-server -n argocd 8888:443
 
 ngrok http https://localhost:8080
+
+ngrok http https://localhost:8888
